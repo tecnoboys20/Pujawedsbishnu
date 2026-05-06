@@ -212,17 +212,35 @@ const iconOn = document.getElementById("musicIconOn");
 const iconOff = document.getElementById("musicIconOff");
 
 let isPlaying = false;
-
-// Attempt auto-play on first user interaction
 let hasInteracted = false;
+bgMusic.volume = 0.5; // Soft volume
+
+function startMusic() {
+    bgMusic.play().then(() => {
+        isPlaying = true;
+        iconOn.style.display = "block";
+        iconOff.style.display = "none";
+    }).catch(e => {
+        console.log("Audio autoplay prevented by browser. Waiting for user interaction.");
+    });
+}
+
+// Attempt auto-play as soon as the page loads
+window.addEventListener('load', () => {
+    startMusic();
+});
+
+// Fallback: If autoplay is blocked by browser, play on first click/scroll anywhere
 document.body.addEventListener('click', () => {
     if (!hasInteracted && !isPlaying) {
-        bgMusic.volume = 0.5; // Soft volume
-        bgMusic.play().then(() => {
-            isPlaying = true;
-            iconOn.style.display = "block";
-            iconOff.style.display = "none";
-        }).catch(e => console.log("Audio autoplay prevented"));
+        startMusic();
+        hasInteracted = true;
+    }
+}, { once: true });
+
+document.body.addEventListener('scroll', () => {
+    if (!hasInteracted && !isPlaying) {
+        startMusic();
         hasInteracted = true;
     }
 }, { once: true });

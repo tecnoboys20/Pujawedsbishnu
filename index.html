@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puja & Bishnu | A Cinematic Wedding Invitation</title>
+    <meta name="description" content="Together with their families, Puja and Bishnu invite you to celebrate their wedding ceremony.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="assets/Rote Gachey Khobor ( Sarva Mangala )  Rupak Tiary  Qpid India  Best Weeding Song 2025.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Control -->
+    <button class="music-toggle" id="musicToggle">
+        <svg id="musicIconOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+        </svg>
+        <svg id="musicIconOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+    </button>
+
+    <!-- Background Animation Layer -->
+    <div class="night-sky-bg" id="skyBg">
+        <!-- Stars will be injected via JS -->
+        <div class="stars-layer-1"></div>
+        <div class="stars-layer-2"></div>
+        <div class="stars-layer-3"></div>
+    </div>
+
+    <!-- Floating Lanterns -->
+    <div id="lanterns-container"></div>
+
+    <!-- Glassmorphism Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">P <span class="heart">&</span> B</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#services">Services</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content reveal">
+            <p class="tagline">A Romantic Night Sky Wedding</p>
+            <h1 class="main-heading">PUJA ADAK<br><span class="weds">weds</span><br>Bishnu Gopal Patra</h1>
+            <p class="sub-heading">Together with their families, invite you to celebrate their wedding ceremony.</p>
+            
+            <div class="hero-meta">
+                <div class="meta-item">
+                    <span class="icon">📍</span>
+                    <span>Koptipur, Sabang, West Bengal</span>
+                </div>
+                <div class="meta-item">
+                    <span class="icon">📅</span>
+                    <span>12th May</span>
+                </div>
+            </div>
+            <a href="#story" class="scroll-down">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Invitation Message Section -->
+    <section class="story" id="story">
+        <div class="container reveal">
+            <div class="story-card glass-card">
+                <h2 class="section-title">The Invitation</h2>
+                <div class="invitation-text">
+                    <p>With hearts full of love and joy,</p>
+                    <p>we invite you to be a part of our beautiful journey as we begin a new chapter together.</p>
+                    <p>Your blessings and presence will make our special day even more memorable.</p>
+                </div>
+                <div class="signature">Puja & Bishnu</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section" id="countdown">
+        <div class="container reveal">
+            <h2 class="section-title">Waiting For The Big Day</h2>
+            <div class="countdown-container" id="timer">
+                <div class="time-box glass-card">
+                    <span class="number" id="days">00</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="time-box glass-card">
+                    <span class="number" id="hours">00</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="time-box glass-card">
+                    <span class="number" id="minutes">00</span>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="time-box glass-card">
+                    <span class="number" id="seconds">00</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="container reveal">
+            <h2 class="section-title">A Glimpse of Us</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item glass-card">
+                    <img src="assets/gallery/1.png" alt="Gallery 1">
+                </div>
+                <div class="gallery-item glass-card">
+                    <img src="assets/gallery/2.png" alt="Gallery 2">
+                </div>
+                <div class="gallery-item glass-card">
+                    <img src="assets/gallery/3.png" alt="Gallery 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <div class="container reveal">
+            <h2 class="section-title">Wedding Location</h2>
+            <div class="location-card glass-card">
+                <div class="location-details">
+                    <h3>The Grand Venue</h3>
+                    <p><span class="live-dot"></span> 📍 Koptipur, Sabang, West Bengal, India</p>
+                    <p>12th May | 7:00 PM Onwards</p>
+                    <div class="location-actions">
+                        <a href="https://maps.google.com/?q=Koptipur,+Sabang,+West+Bengal" target="_blank" class="action-btn">Locate on Map</a>
+                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Puja+and+Bishnu+Gopal+Patra&dates=20260512T133000Z/20260512T183000Z&details=You+are+invited+to+celebrate+the+wedding+ceremony.&location=Koptipur,+Sabang,+West+Bengal" target="_blank" class="action-btn outline">Set Reminder</a>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117965.71960226343!2d87.50280459346617!3d22.20309605727038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02c3cc6c5e263d%3A0xe9f7cb66b7cbfcd!2sSabang%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1715000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Made with ❤️ for Puja & Bishnu</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

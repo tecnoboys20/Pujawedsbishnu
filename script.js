@@ -101,7 +101,10 @@ setInterval(createShootingStar, 4000);
 // ==========================================
 function generateLanterns() {
     const container = document.getElementById('lanterns-container');
-    const lanternCount = 12; // Adjust number of lanterns
+    const lanternCount = 8; // Fewer lanterns so they aren't clustered
+
+    // Divide screen into slices to spread lanterns evenly across the width
+    const sliceWidth = 100 / lanternCount;
 
     for (let i = 0; i < lanternCount; i++) {
         const lantern = document.createElement('img');
@@ -109,25 +112,29 @@ function generateLanterns() {
         lantern.classList.add('lantern');
         lantern.alt = 'Floating Lantern';
 
-        // Random positioning
-        const x = Math.random() * 90; // 0 to 90vw
+        // Distribute horizontally evenly with some randomness within their slice
+        const x = (i * sliceWidth) + (Math.random() * (sliceWidth - 5));
         
-        // Random size (bigger range)
-        const size = Math.random() * 300 + 150; // Between 150px and 450px
+        // Random size (medium to a bit bigger: 80px to 220px)
+        const size = Math.random() * 140 + 80; 
         
-        // Random animation duration (20s to 50s)
-        const duration = Math.random() * 30 + 20;
+        // Random animation duration (25s to 45s) for a slow float
+        const duration = Math.random() * 20 + 25;
         
-        // Random animation delay (0 to 30s) so they don't all start at once
+        // Random animation delay (0 to 30s) so they don't spawn at the exact same height
         const delay = Math.random() * 30;
+
+        // Choose a random natural sway animation
+        const animType = Math.floor(Math.random() * 3) + 1;
 
         // Random blur based on size (smaller = more blurred for depth)
         let blur = 0;
-        if (size < 200) blur = 2;
-        else if (size < 300) blur = 1;
+        if (size < 120) blur = 2;
+        else if (size < 160) blur = 1;
 
         lantern.style.left = `${x}vw`;
         lantern.style.width = `${size}px`;
+        lantern.style.animationName = `floatNatural${animType}`;
         lantern.style.animationDuration = `${duration}s`;
         lantern.style.animationDelay = `-${delay}s`; // Negative delay starts animation mid-way
         

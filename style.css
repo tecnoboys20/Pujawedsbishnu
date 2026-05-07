@@ -312,11 +312,20 @@ h1, h2, h3 {
     opacity: 0.9;
 }
 
-.hero-meta {
+.hero-meta-container {
     display: flex;
-    justify-content: center;
-    gap: 3rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
     margin-bottom: 4rem;
+}
+
+.meta-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .meta-item {
@@ -331,6 +340,11 @@ h1, h2, h3 {
     border: 1px solid var(--glass-border);
     border-radius: 30px;
     backdrop-filter: blur(5px);
+}
+
+.action-btn.small-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
 }
 
 /* Scroll Indicator */

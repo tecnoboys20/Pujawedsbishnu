@@ -159,13 +159,13 @@ generateLanterns();
 // ==========================================
 // 3. Wedding Countdown
 // ==========================================
-// Set the date we're counting down to (12th May of current year, or next year if passed)
+// Set the date we're counting down to (13th May of current year, or next year if passed)
 const currentYear = new Date().getFullYear();
-let weddingDate = new Date(`May 12, ${currentYear} 19:00:00`).getTime();
+let weddingDate = new Date(`May 13, ${currentYear} 19:00:00`).getTime();
 
-// If May 12th has already passed this year, set to next year
+// If May 13th has already passed this year, set to next year
 if (new Date().getTime() > weddingDate) {
-    weddingDate = new Date(`May 12, ${currentYear + 1} 19:00:00`).getTime();
+    weddingDate = new Date(`May 13, ${currentYear + 1} 19:00:00`).getTime();
 }
 
 const countdownTimer = setInterval(function() {

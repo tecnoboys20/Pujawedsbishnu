@@ -43,7 +43,9 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 // ==========================================
 function generateStars() {
     const sky = document.getElementById('skyBg');
-    const starCount = 150;
+    // Reduce star count on mobile for performance
+    const isMobile = window.innerWidth < 768;
+    const starCount = isMobile ? 60 : 150;
 
     for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
@@ -101,7 +103,9 @@ setInterval(createShootingStar, 4000);
 // ==========================================
 function generateLanterns() {
     const container = document.getElementById('lanterns-container');
-    const lanternCount = 8; // Fewer lanterns so they aren't clustered
+    // Reduce lantern count on mobile for performance
+    const isMobile = window.innerWidth < 768;
+    const lanternCount = isMobile ? 4 : 8;
 
     // Divide screen into slices to spread lanterns evenly across the width
     const sliceWidth = 100 / lanternCount;
@@ -127,19 +131,24 @@ function generateLanterns() {
         // Choose a random natural sway animation
         const animType = Math.floor(Math.random() * 3) + 1;
 
-        // Random blur based on size (smaller = more blurred for depth)
-        let blur = 0;
-        if (size < 120) blur = 2;
-        else if (size < 160) blur = 1;
+        // For performance, replace heavy CSS blur/drop-shadow with simple opacity based on size
+        let opacity = 0.9;
+        let zIndex = -1;
+        if (size < 120) {
+            opacity = 0.5;
+            zIndex = -3;
+        } else if (size < 160) {
+            opacity = 0.7;
+            zIndex = -2;
+        }
 
         lantern.style.left = `${x}vw`;
         lantern.style.width = `${size}px`;
+        lantern.style.opacity = opacity;
+        lantern.style.zIndex = zIndex;
         lantern.style.animationName = `floatNatural${animType}`;
         lantern.style.animationDuration = `${duration}s`;
         lantern.style.animationDelay = `-${delay}s`; // Negative delay starts animation mid-way
-        
-        // Add strong golden glow and keep original color
-        lantern.style.filter = `blur(${blur}px) drop-shadow(0 0 25px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.5))`;
 
         container.appendChild(lantern);
     }

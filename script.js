@@ -103,9 +103,9 @@ setInterval(createShootingStar, 4000);
 // ==========================================
 function generateLanterns() {
     const container = document.getElementById('lanterns-container');
-    // Reduce lantern count on mobile for performance
+    // More lanterns as requested
     const isMobile = window.innerWidth < 768;
-    const lanternCount = isMobile ? 4 : 8;
+    const lanternCount = isMobile ? 8 : 16;
 
     // Divide screen into slices to spread lanterns evenly across the width
     const sliceWidth = 100 / lanternCount;
@@ -117,28 +117,28 @@ function generateLanterns() {
         lantern.alt = 'Floating Lantern';
 
         // Distribute horizontally evenly with some randomness within their slice
-        const x = (i * sliceWidth) + (Math.random() * (sliceWidth - 5));
+        const x = (i * sliceWidth) + (Math.random() * (sliceWidth - 3));
         
-        // Random size (medium to a bit bigger: 80px to 220px)
-        const size = Math.random() * 140 + 80; 
+        // Vastly different sizes (small, medium, big: 40px to 260px)
+        const size = Math.random() * 220 + 40; 
         
-        // Random animation duration (25s to 45s) for a slow float
-        const duration = Math.random() * 20 + 25;
+        // Random animation duration (20s to 45s)
+        const duration = Math.random() * 25 + 20;
         
-        // Random animation delay (0 to 30s) so they don't spawn at the exact same height
-        const delay = Math.random() * 30;
+        // Random animation delay (0 to 40s) so they are spread out in height
+        const delay = Math.random() * 40;
 
         // Choose a random natural sway animation
         const animType = Math.floor(Math.random() * 3) + 1;
 
-        // For performance, replace heavy CSS blur/drop-shadow with simple opacity based on size
+        // Depth perception using opacity and zIndex
         let opacity = 0.9;
         let zIndex = -1;
-        if (size < 120) {
-            opacity = 0.5;
+        if (size < 100) {
+            opacity = 0.3;
             zIndex = -3;
-        } else if (size < 160) {
-            opacity = 0.7;
+        } else if (size < 180) {
+            opacity = 0.6;
             zIndex = -2;
         }
 
@@ -148,7 +148,7 @@ function generateLanterns() {
         lantern.style.zIndex = zIndex;
         lantern.style.animationName = `floatNatural${animType}`;
         lantern.style.animationDuration = `${duration}s`;
-        lantern.style.animationDelay = `-${delay}s`; // Negative delay starts animation mid-way
+        lantern.style.animationDelay = `-${delay}s`;
 
         container.appendChild(lantern);
     }

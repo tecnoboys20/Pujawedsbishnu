@@ -219,6 +219,7 @@ const bgMusic = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
 const iconOn = document.getElementById("musicIconOn");
 const iconOff = document.getElementById("musicIconOff");
+const tooltip = document.getElementById("musicTooltip");
 
 let isPlaying = false;
 let hasInteracted = false;
@@ -229,6 +230,7 @@ function startMusic() {
         isPlaying = true;
         iconOn.style.display = "block";
         iconOff.style.display = "none";
+        if (tooltip) tooltip.style.opacity = "0"; // Hide tooltip when playing
     }).catch(e => {
         console.log("Audio autoplay prevented by browser. Waiting for user interaction.");
     });
@@ -239,20 +241,15 @@ window.addEventListener('load', () => {
     startMusic();
 });
 
-// Fallback: If autoplay is blocked by browser, play on first click/scroll anywhere
-document.body.addEventListener('click', () => {
-    if (!hasInteracted && !isPlaying) {
-        startMusic();
-        hasInteracted = true;
-    }
-}, { once: true });
-
-document.body.addEventListener('scroll', () => {
-    if (!hasInteracted && !isPlaying) {
-        startMusic();
-        hasInteracted = true;
-    }
-}, { once: true });
+// Fallback: If autoplay is blocked by browser, play on first click/touch/scroll anywhere
+['click', 'touchstart', 'scroll'].forEach(evt => {
+    document.body.addEventListener(evt, () => {
+        if (!hasInteracted && !isPlaying) {
+            startMusic();
+            hasInteracted = true;
+        }
+    }, { once: true });
+});
 
 musicToggle.addEventListener('click', (e) => {
     e.stopPropagation(); // Prevent triggering the body click
@@ -264,6 +261,7 @@ musicToggle.addEventListener('click', (e) => {
         bgMusic.play();
         iconOn.style.display = "block";
         iconOff.style.display = "none";
+        if (tooltip) tooltip.style.opacity = "0";
     }
     isPlaying = !isPlaying;
     hasInteracted = true;

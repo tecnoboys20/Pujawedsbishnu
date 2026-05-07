@@ -607,6 +607,37 @@ footer {
     height: 24px;
 }
 
+.music-tooltip {
+    position: absolute;
+    right: 70px; /* To the left of the button */
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--text-gold);
+    color: var(--primary-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    pointer-events: none;
+}
+
+/* A small triangle pointing to the button */
+.music-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px 0 6px 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--text-gold);
+}
+
 /* =========================================
    Animations & Reveals
    ========================================= */
